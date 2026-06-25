@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CandidatesService } from './candidates.service';
+import { CreateCandidateDto } from './create-candidate.dto';
 
 @Controller('candidates')
 export class CandidatesController {
@@ -11,7 +12,7 @@ export class CandidatesController {
   }
 
   @Post()
-  create(@Body() body: any) {
+  create(@Body() body: CreateCandidateDto) {
     return this.candidatesService.create(body);
   }
 }
